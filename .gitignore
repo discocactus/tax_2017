@@ -1,15 +1,7 @@
 /.ipynb_checkpoints/*
-
-
-
 /__pycache__/*
 
-
-
 .DS_Store
-
 *.log
-
 *.pyc
 .env
-tax_2017-checkpoint.ipynb
