@@ -472,6 +472,7 @@ from selenium.webdriver.support.select import Select
 
 import sys
 import time
+import re
 
 
 # In[ ]:
@@ -570,6 +571,60 @@ for detail in order:
 # In[ ]:
 
 
+text1 = order[1].text
+text1
+
+
+# In[ ]:
+
+
+list1 = re.split('\n', text1)
+list1
+
+
+# In[ ]:
+
+
+text2 = order[2].text
+text2
+
+
+# In[ ]:
+
+
+list2 = re.split('\n', text2)
+list2
+
+
+# In[ ]:
+
+
+for index, item in enumerate(list1):
+    print("index: {0}, value: {1}".format(str(index), item))
+
+
+# In[ ]:
+
+
+for index, item in enumerate(list2):
+    print("index: {0}, value: {1}".format(str(index), item))
+
+
+# In[ ]:
+
+
+list(filter(lambda x: re.match('\d\d\d\d年', x), list1))
+
+
+# In[ ]:
+
+
+list(filter(lambda x: re.match('￥', x), list1))
+
+
+# In[ ]:
+
+
 order = driver.find_elements_by_class_name("order")
 
 
@@ -583,11 +638,10 @@ info.text
 # In[ ]:
 
 
-detail = order[5].find_element_by_css_selector(".a-grid-top")
+detail = order[1].find_element_by_css_selector(".a-grid-top")
 arow = detail.find_elements_by_css_selector(".a-row")
 for x in arow:
     print(x.text)
-    print('tag_name: {0}'.format(x.tag_name))
     print('\n')
 
 
@@ -646,7 +700,7 @@ print_order_history()
 
 
 # スクリーンショットを撮る
-driver.save_screenshot('search_results.png')
+driver.save_screenshot('screenshot.png')
 
 
 # In[ ]:
