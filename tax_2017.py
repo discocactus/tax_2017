@@ -35,6 +35,11 @@ bill_dir = r"D:\documents\tax\h29\Bill_2017"
 
 
 def getEncode(filepath):
+    '''
+    テキストファイルの文字コードを確認する関数
+    デコードエラーが出なくなるまで順番に試す
+    試す順番で結果が変わる可能性がある
+    '''
     encs = "iso-2022-jp euc-jp sjis utf-8".split()
     for enc in encs:
         with open(filepath, encoding=enc) as fr:
