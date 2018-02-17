@@ -73,7 +73,7 @@ jcb = pd.DataFrame()
 for x in bills:
     jcb = jcb.append(pd.read_csv('{0}\{1}\{2}'.format(bill_dir, card, x)
                      , skiprows=5, encoding='Shift-JIS'))
-jcb
+display(jcb)
 
 
 # In[ ]:
@@ -111,35 +111,35 @@ jcb['カード'] = 'JCB'
 
 
 jcb = jcb[jcb['ご利用日'].str.contains('2017')]
-jcb
+display(jcb)
 
 
 # In[ ]:
 
 
 jcb = jcb[['ご利用日', 'コード', 'ご利用金額(￥)', 'ご利用先など', 'カード']]
-jcb
+display(jcb)
 
 
 # In[ ]:
 
 
 jcb.columns = ['日付', 'コード', '金額', '備考', 'カード']
-jcb
+display(jcb)
 
 
 # In[ ]:
 
 
 jcb = jcb.sort_values(['備考', '日付']).reset_index(drop=True)
-jcb
+display(jcb)
 
 
 # In[ ]:
 
 
 jcb['日付'] = jcb['日付'].str.replace(' ', "")
-jcb
+display(jcb)
 
 
 # In[ ]:
@@ -275,7 +275,7 @@ view = pd.DataFrame()
 for x in bills:
     view = view.append(pd.read_csv('{0}\{1}\{2}'.format(bill_dir, card, x)
                        , skiprows=5, encoding='Shift-JIS'))
-view
+display(view)
 
 
 # In[ ]:
@@ -313,35 +313,35 @@ view['カード'] = 'view'
 
 
 view = view[~view['ご利用箇所'].isnull()]
-view
+display(view)
 
 
 # In[ ]:
 
 
 view = view[view['ご利用年月日'].str.contains('2017/')]
-view
+display(view)
 
 
 # In[ ]:
 
 
 view = view[['ご利用年月日', 'コード', 'ご利用額', 'ご利用箇所', 'カード']]
-view
+display(view)
 
 
 # In[ ]:
 
 
 view.columns = ['日付', 'コード', '金額', '備考', 'カード']
-view
+display(view)
 
 
 # In[ ]:
 
 
 view = view.sort_values(['日付']).reset_index(drop=True)
-view
+display(view)
 
 
 # In[ ]:
