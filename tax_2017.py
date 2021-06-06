@@ -28,7 +28,7 @@ os.getcwd()
 
 
 # 請求書の場所を指定
-bill_dir = r"D:\documents\tax\h31\Bill_2019"
+bill_dir = r"D:\documents\tax\r2(h32)\Bill_2020"
 
 
 # In[ ]:
@@ -54,7 +54,7 @@ def getEncode(filepath):
 # In[ ]:
 
 
-getEncode(r"D:\documents\tax\h31\Bill_2019\jcb\202002meisai.csv")
+getEncode(r"D:\documents\tax\r2(h32)\Bill_2020\rakuten\enavi202002(3765).csv")
 
 
 # # JCB
@@ -116,7 +116,7 @@ jcb['カード'] = 'JCB'
 # In[ ]:
 
 
-jcb = jcb[jcb['ご利用日'].str.contains('2019')]
+jcb = jcb[jcb['ご利用日'].str.contains('2020')]
 display(jcb)
 
 
@@ -172,10 +172,11 @@ bills
 # In[ ]:
 
 
+# 2020年2月から文字コードがShift-JISからUTF-8に変更された?
 rakuten = pd.DataFrame()
 for x in bills:
     rakuten = rakuten.append(pd.read_csv('{0}\{1}\{2}'.format(bill_dir, card, x)
-                             , encoding='Shift-JIS'), sort = True)
+                             , encoding='utf-8'), sort = True)
 display(rakuten)
 
 
@@ -217,7 +218,7 @@ display(rakuten)
 # 2018年の7月分から日付表記が yy.mm.dd から yyyy/mm/dd に変更になった
 # regex=True とすることで 18. も 2018/ も抽出される
 # rakuten = rakuten[rakuten['利用日'].str.contains('18.', regex=True)]
-rakuten = rakuten[rakuten['利用日'].str.contains('2019/')]
+rakuten = rakuten[rakuten['利用日'].str.contains('2020/')]
 display(rakuten)
 
 
@@ -331,7 +332,7 @@ display(view)
 # In[ ]:
 
 
-view = view[view['ご利用年月日'].str.contains('2019/')]
+view = view[view['ご利用年月日'].str.contains('2020/')]
 display(view)
 
 
@@ -423,7 +424,7 @@ display(nicos)
 # In[ ]:
 
 
-nicos = nicos[nicos['ご利用日'].str.contains('2019-')]
+nicos = nicos[nicos['ご利用日'].str.contains('2020-')]
 display(nicos)
 
 
